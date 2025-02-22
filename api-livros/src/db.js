@@ -1,13 +1,25 @@
-const { Pool } = require('pg');
+const mysql = require('mysql2/promise');
 
-const pool = new Pool({
-    user: 'postgres',          // Usuário do PostgreSQL
-    host: 'host.docker.internal', // Conectar ao PostgreSQL no Docker
-    database: 'seu_banco',     // Nome do banco de dados
-    password: 'postgres',     // Senha do PostgreSQL
-    port: 5432,                // Porta padrão do PostgreSQL
+// Configuração da conexão
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "mysql",
+    database: "livros",
+    port: 3306,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-pool.connect()
-    .then(() => console.log('🔥 Conectado ao PostgreSQL no Docker!'))
-    .catch(err => console.error('🚨 Erro na conexão:', err));
+// Teste de conexão
+pool.getConnection()
+    .then(connection => {
+        console.log("Conexão bem-sucedida ao MySQL!");
+        connection.release();
+    })
+    .catch(err => {
+        console.error("Erro ao conectar ao MySQL:", err);
+    });
+
+module.exports = pool;
