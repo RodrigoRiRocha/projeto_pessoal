@@ -65,7 +65,7 @@ Adiciona um novo livro.
 
 ## Testando a API
 
-Você pode testar a API usando ferramentas como Postman.
+Você pode testar a API usando a ferramenta  Postman.
 
 
 ## Testando a API com Postman
