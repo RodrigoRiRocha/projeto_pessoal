@@ -14,6 +14,7 @@ services:
       - DB_PASSWORD=mysql
       - DB_NAME=livros
       - DB_PORT=3306
+      - SERVER_PATH=/usr/src/app/api-livros/src/server.js
     command: ["npm", "start"]
 
   db:

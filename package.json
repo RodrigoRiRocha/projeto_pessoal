@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node C:/Users/digui/Desktop/teste-tecnico-tag/api-livros/src/server.js",
-    "dev": "nodemon C:/Users/digui/Desktop/teste-tecnico-tag/api-livros/src/server.js"
+    "start": "node $SERVER_PATH",
+    "dev": "nodemon $SERVER_PATH"
   },
   "keywords": [],
   "author": "",
