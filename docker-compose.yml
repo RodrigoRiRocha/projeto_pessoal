@@ -15,7 +15,7 @@ services:
       - DB_NAME=livros
       - DB_PORT=3306
       - SERVER_PATH=/usr/src/app/api-livros/src/server.js
-    command: ["/usr/src/app/wait-for-it.sh", "db", "3306", "--", "npm", "start"]
+    command: ["npm", "start"]
 
   db:
     image: mysql:latest
