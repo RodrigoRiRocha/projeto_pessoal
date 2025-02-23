@@ -10,6 +10,9 @@ COPY package*.json ./
 # Instale as dependências
 RUN npm install
 
+# Instale as dependências de desenvolvimento
+RUN npm install --only=dev
+
 # Copie o restante do código da aplicação
 COPY . .
 

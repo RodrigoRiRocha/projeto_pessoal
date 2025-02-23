@@ -7,6 +7,7 @@ app.use(express.json());
 // Rota GET /livros -> Retorna a lista de livros com paginação
 app.get("/livros", async (req, res) => {
     try {
+
         const { limit = 10, offset = 0 } = req.query;
 
         const [result] = await pool.query(
@@ -24,6 +25,7 @@ app.get("/livros", async (req, res) => {
 // Rota POST /livros -> Adiciona um novo livro
 app.post("/livros", async (req, res) => {
     try {
+
         const { titulo, isbn, numero_paginas, autores, editora, sinopse, data_lancamento } = req.body;
 
         if (!titulo || !isbn || !numero_paginas || !autores) {
@@ -38,7 +40,7 @@ app.post("/livros", async (req, res) => {
             "INSERT INTO livros (titulo, isbn, numero_paginas, autores, editora, sinopse, data_lancamento) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [titulo, isbn, numero_paginas, autores, editora, sinopse, data_lancamento]
         );
-
+        
         res.status(201).json({ id: result.insertId, titulo, isbn, numero_paginas, autores, editora, sinopse, data_lancamento });
     } catch (error) {
         console.error("Erro ao cadastrar livro:", error);
@@ -48,5 +50,5 @@ app.post("/livros", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
