@@ -13,6 +13,12 @@ RUN npm install
 # Instale as dependências de desenvolvimento
 RUN npm install --only=dev
 
+# Copie o script wait-for-it.sh
+COPY wait-for-it.sh /usr/src/app/wait-for-it.sh
+
+# Torne o script executável
+RUN chmod +x /usr/src/app/wait-for-it.sh
+
 # Copie o restante do código da aplicação
 COPY . .
 
